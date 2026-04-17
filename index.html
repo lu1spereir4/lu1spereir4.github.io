@@ -3,154 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Pereira | Data Engineer</title>
+    <title>Luis Pereira | Data Engineer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Diseño minimalista y profesional (Dark Mode) */
         :root {
-            --bg-color: #0d1117;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --card-bg: #161b22;
-            --border: #30363d;
+            --bg-dark: #070913;
+            --bg-card: rgba(22, 27, 44, 0.6);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #818cf8;
+            --border: rgba(56, 189, 248, 0.15);
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            padding: 4rem 2rem 2rem;
-            max-width: 800px;
-            margin: auto;
-            border-bottom: 1px solid var(--border);
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
+                              radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.05), transparent 25%);
         }
-        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; color: #ffffff; }
-        h2 { font-size: 1.2rem; color: var(--text-muted); font-weight: 400; margin-top: 0; }
+
         .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        .section-title {
-            font-size: 1.5rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: border-color 0.3s ease;
+
+        /* Nav & Hero */
+        header {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            position: relative;
         }
-        .card:hover { border-color: var(--accent); }
-        .card h3 { margin-top: 0; color: var(--accent); margin-bottom: 0.5rem; }
-        .card p { font-size: 0.9rem; color: var(--text-muted); flex-grow: 1; }
-        .tags { margin-top: 1rem; }
-        .tag {
-            background-color: rgba(88, 166, 255, 0.1);
-            color: var(--accent);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
+
+        .hero-subtitle {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
             display: inline-block;
-            margin-bottom: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .contact-links { margin-top: 1.5rem; }
-        .contact-links a { margin-right: 1.5rem; font-weight: 600; font-size: 1.1rem;}
-        .highlight { color: #ffffff; font-weight: 500; }
+
+        .btn-primary:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            background-color: var(--border);
+            flex-grow: 1;
+            margin-left: 1.5rem;
+        }
+
+        /* Experience Timeline */
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-date {
+            font-family: 'Fira Code', monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        /* Project Cards (Glassmorphism) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px -15px rgba(56, 189, 248, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .folder-icon { font-size: 2rem; color: var(--accent-primary); }
+        .links i { font-size: 1.2rem; color: var(--text-main); margin-left: 1rem; transition: color 0.3s; }
+        .links a:hover i { color: var(--accent-primary); }
+
+        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .card p { font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; }
+
+        .tech-stack {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            position: absolute;
+            bottom: 2rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .timeline-date { margin-bottom: 0.5rem; }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Luis Pereira</h1>
-    <h2>Data Engineer | ELT/ETL • Lakehouse • Dimensional Modeling</h2>
-    <p>Ingeniero Civil Informático de la Universidad del Bío-Bío, con intercambio académico en la UPV (España). Me enfoco en construir pipelines reproducibles, arquitecturas de datos eficientes y modelos analíticos escalables. Próximamente asumiendo como Data Analyst Trainee (AI) en PwC Chile.</p>
-    <div class="contact-links">
-        <a href="mailto:luispereira502@gmail.com">Email</a>
-        <a href="https://github.com/lu1spereir4" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/tu-linkedin" target="_blank">LinkedIn</a> </div>
-</header>
-
-<div class="container">
-    <section>
-        <h2 class="section-title">Proyectos Destacados</h2>
-        <div class="grid">
+    <div class="container">
+        <header class="fade-in">
+            <p class="hero-subtitle">Hola, mi nombre es</p>
+            <h1>Luis Pereira.</h1>
+            <h1 style="color: var(--text-muted); font-size: clamp(2rem, 4vw, 4rem);">Construyo arquitecturas de datos.</h1>
+            <p class="hero-desc">
+                Ingeniero Civil Informático especializado en <strong>Data Engineering</strong>. 
+                Me enfoco en el diseño de pipelines ELT/ETL, modelado dimensional y arquitecturas Lakehouse para procesar datos a gran escala con alta disponibilidad.
+            </p>
+            <div>
+                <a href="mailto:luispereira502@gmail.com" class="btn-primary"><i class="fa-regular fa-envelope"></i> Contáctame</a>
+            </div>
             
-            <div class="card">
-                <h3>📊 Data Lakehouse: Movilidad Pública</h3>
-                <p>Data Lakehouse dockerizado para analizar 50.5M de viajes en Santiago. Implementación de Arquitectura Medallion (Raw/Silver/Gold) hacia un Modelo Constelación analítico.</p>
-                <div class="tags">
-                    <span class="tag">DuckDB</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">SQL Server</span>
-                    <span class="tag">Docker</span>
+            <div class="social-links">
+                <a href="https://github.com/lu1spereir4" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com/in/tu-linkedin" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </header>
+
+        <section id="experience" class="fade-in">
+            <h2 class="section-title">Experiencia Profesional</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">2026 - Presente</div>
+                <div class="timeline-content">
+                    <h3>Data Analyst Trainee (AI)</h3>
+                    <h4>PwC Chile</h4>
+                    <p>Incorporación al equipo de Inteligencia Artificial para aplicar mejores prácticas en el ciclo de vida de los datos y desarrollo de soluciones analíticas a nivel consultoría.</p>
                 </div>
-                <a href="https://github.com/lu1spereir4/Data_Lakehouse_Movilidad_Publica_Santiago" target="_blank">Ver Repositorio &rarr;</a>
             </div>
 
-            <div class="card">
-                <h3>🏉 WesRugby & POS Offline IoT</h3>
-                <p>Sistema integral para club deportivo con enfoque offline-first. Desarrollado para Raspberry Pi, capturando datos localmente y sincronizando de forma asíncrona al recuperar conectividad.</p>
-                <div class="tags">
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Flutter</span>
-                    <span class="tag">Raspberry Pi</span>
-                    <span class="tag">IoT</span>
+            <div class="timeline-item">
+                <div class="timeline-date">Ene 2025 - Mar 2025</div>
+                <div class="timeline-content">
+                    <h3>Business Intelligence Analyst (Práctica)</h3>
+                    <h4>AFP Capital</h4>
+                    <p>Desarrollo y optimización de flujos de datos. Extracción, limpieza y visualización de KPIs críticos para el negocio utilizando Power BI, Python y bases de datos SQL.</p>
                 </div>
-                <a href="https://github.com/lu1spereir4/GestionInventario" target="_blank">Ver Repositorio &rarr;</a>
             </div>
+        </section>
 
-            <div class="card">
-                <h3>📈 Data Warehouse: OLTP a OLAP</h3>
-                <p>Migración y modelado dimensional (Star Schema) de base de datos Pagila. Creación de dimensiones, tabla de hechos y consultas analíticas avanzadas (CTEs, Window Functions).</p>
-                <div class="tags">
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">Dimensional Modeling</span>
-                    <span class="tag">SQL Analítico</span>
+        <section id="projects" class="fade-in">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-regular fa-folder-open folder-icon"></i>
+                        <div class="links">
+                            <a href="https://github.com/lu1spereir4/Data_Lakehouse_Movilidad_Publica_Santiago" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Data Lakehouse: Santiago</h3>
+                    <p>Arquitectura Medallion (Bronze/Silver/Gold) procesando 50.5 millones de registros de transporte público. Optimizado con Parquet y DuckDB para consultas analíticas pesadas.</p>
+                    <div class="tech-stack">
+                        <span>DuckDB</span>
+                        <span>Python</span>
+                        <span>SQL Server</span>
+                        <span>Docker</span>
+                    </div>
                 </div>
-                <a href="https://github.com/lu1spereir4/ProyectosDataEngineer/tree/main/pagila_to_starModel" target="_blank">Ver Repositorio &rarr;</a>
-            </div>
 
-            <div class="card">
-                <h3>🚗 BioRuta</h3>
-                <p>Startup co-fundada universitaria. Plataforma de carpooling (viajes compartidos) que conecta conductores y pasajeros con geolocalización, chat y motor de matching de precios.</p>
-                <div class="tags">
-                    <span class="tag">Dart</span>
-                    <span class="tag">Flutter</span>
-                    <span class="tag">Node.js</span>
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-regular fa-folder-open folder-icon"></i>
+                        <div class="links">
+                            <a href="https://github.com/lu1spereir4/GestionInventario" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>WesRugby IoT POS</h3>
+                    <p>Sistema Offline-First para club de rugby. Procesamiento en Raspberry Pi con sincronización asíncrona hacia MongoDB cuando se recupera la conectividad de red.</p>
+                    <div class="tech-stack">
+                        <span>Node.js</span>
+                        <span>Flutter</span>
+                        <span>Raspberry Pi</span>
+                        <span>IoT</span>
+                    </div>
                 </div>
-                <a href="https://github.com/lu1spereir4/BioRuta" target="_blank">Ver Repositorio &rarr;</a>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-regular fa-folder-open folder-icon"></i>
+                        <div class="links">
+                            <a href="https://github.com/lu1spereir4/ProyectosDataEngineer/tree/main/pagila_to_starModel" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>OLTP a OLAP (Star Schema)</h3>
+                    <p>Migración de base de datos relacional Pagila hacia un modelo dimensional. Implementación de CTEs y Window Functions para KPIs de negocio complejos.</p>
+                    <div class="tech-stack">
+                        <span>PostgreSQL</span>
+                        <span>Dim Modeling</span>
+                        <span>SQL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa-regular fa-folder-open folder-icon"></i>
+                        <div class="links">
+                            <a href="https://github.com/lu1spereir4/BioRuta" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>BioRuta</h3>
+                    <p>Plataforma de viajes compartidos (Carpooling) co-fundada en entorno universitario. Incluye motor de matching, cálculo de precios dinámico y geolocalización.</p>
+                    <div class="tech-stack">
+                        <span>Dart</span>
+                        <span>Flutter</span>
+                        <span>Node.js</span>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-        </div>
-    </section>
+        <section class="fade-in" style="padding-bottom: 8rem;">
+            <h2 class="section-title">Logros</h2>
+            <div class="timeline-item" style="grid-template-columns: 1fr;">
+                <div class="timeline-content">
+                    <h3>🏆 Campeón Nacional BRC Chile 2025</h3>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem;">Primer lugar en la categoría universitaria del torneo de robótica, destacando en la integración y optimización conjunta de hardware y algoritmos de software.</p>
+                </div>
+            </div>
+        </section>
 
-    <section style="margin-top: 3rem;">
-        <h2 class="section-title">Logros & Skills</h2>
-        <p><span class="highlight">Campeón Nacional de Robótica:</span> Primer lugar en el torneo BRC Chile 2025 (Categoría Universitaria), demostrando alta capacidad en optimización de hardware y software.</p>
-        <p><span class="highlight">Tech Stack:</span> Python, SQL, DuckDB, Pandas, PostgreSQL, SQL Server, Docker, AWS, Git.</p>
-        <p><span class="highlight">Metodología:</span> Granularidad de datos, Data Quality, diseño offline-first, e implementaciones reproducibles.</p>
-    </section>
-</div>
+    </div>
 
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
