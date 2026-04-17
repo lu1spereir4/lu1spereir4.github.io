@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Pereira | Data Engineer</title>
+    <style>
+        /* Diseño minimalista y profesional (Dark Mode) */
+        :root {
+            --bg-color: #0d1117;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --card-bg: #161b22;
+            --border: #30363d;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 4rem 2rem 2rem;
+            max-width: 800px;
+            margin: auto;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 0.2rem; color: #ffffff; }
+        h2 { font-size: 1.2rem; color: var(--text-muted); font-weight: 400; margin-top: 0; }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover { border-color: var(--accent); }
+        .card h3 { margin-top: 0; color: var(--accent); margin-bottom: 0.5rem; }
+        .card p { font-size: 0.9rem; color: var(--text-muted); flex-grow: 1; }
+        .tags { margin-top: 1rem; }
+        .tag {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .contact-links { margin-top: 1.5rem; }
+        .contact-links a { margin-right: 1.5rem; font-weight: 600; font-size: 1.1rem;}
+        .highlight { color: #ffffff; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Luis Pereira</h1>
+    <h2>Data Engineer | ELT/ETL • Lakehouse • Dimensional Modeling</h2>
+    <p>Ingeniero Civil Informático de la Universidad del Bío-Bío, con intercambio académico en la UPV (España). Me enfoco en construir pipelines reproducibles, arquitecturas de datos eficientes y modelos analíticos escalables. Próximamente asumiendo como Data Analyst Trainee (AI) en PwC Chile.</p>
+    <div class="contact-links">
+        <a href="mailto:luispereira502@gmail.com">Email</a>
+        <a href="https://github.com/lu1spereir4" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/tu-linkedin" target="_blank">LinkedIn</a> </div>
+</header>
+
+<div class="container">
+    <section>
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <h3>📊 Data Lakehouse: Movilidad Pública</h3>
+                <p>Data Lakehouse dockerizado para analizar 50.5M de viajes en Santiago. Implementación de Arquitectura Medallion (Raw/Silver/Gold) hacia un Modelo Constelación analítico.</p>
+                <div class="tags">
+                    <span class="tag">DuckDB</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL Server</span>
+                    <span class="tag">Docker</span>
+                </div>
+                <a href="https://github.com/lu1spereir4/Data_Lakehouse_Movilidad_Publica_Santiago" target="_blank">Ver Repositorio &rarr;</a>
+            </div>
+
+            <div class="card">
+                <h3>🏉 WesRugby & POS Offline IoT</h3>
+                <p>Sistema integral para club deportivo con enfoque offline-first. Desarrollado para Raspberry Pi, capturando datos localmente y sincronizando de forma asíncrona al recuperar conectividad.</p>
+                <div class="tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Flutter</span>
+                    <span class="tag">Raspberry Pi</span>
+                    <span class="tag">IoT</span>
+                </div>
+                <a href="https://github.com/lu1spereir4/GestionInventario" target="_blank">Ver Repositorio &rarr;</a>
+            </div>
+
+            <div class="card">
+                <h3>📈 Data Warehouse: OLTP a OLAP</h3>
+                <p>Migración y modelado dimensional (Star Schema) de base de datos Pagila. Creación de dimensiones, tabla de hechos y consultas analíticas avanzadas (CTEs, Window Functions).</p>
+                <div class="tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Dimensional Modeling</span>
+                    <span class="tag">SQL Analítico</span>
+                </div>
+                <a href="https://github.com/lu1spereir4/ProyectosDataEngineer/tree/main/pagila_to_starModel" target="_blank">Ver Repositorio &rarr;</a>
+            </div>
+
+            <div class="card">
+                <h3>🚗 BioRuta</h3>
+                <p>Startup co-fundada universitaria. Plataforma de carpooling (viajes compartidos) que conecta conductores y pasajeros con geolocalización, chat y motor de matching de precios.</p>
+                <div class="tags">
+                    <span class="tag">Dart</span>
+                    <span class="tag">Flutter</span>
+                    <span class="tag">Node.js</span>
+                </div>
+                <a href="https://github.com/lu1spereir4/BioRuta" target="_blank">Ver Repositorio &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section style="margin-top: 3rem;">
+        <h2 class="section-title">Logros & Skills</h2>
+        <p><span class="highlight">Campeón Nacional de Robótica:</span> Primer lugar en el torneo BRC Chile 2025 (Categoría Universitaria), demostrando alta capacidad en optimización de hardware y software.</p>
+        <p><span class="highlight">Tech Stack:</span> Python, SQL, DuckDB, Pandas, PostgreSQL, SQL Server, Docker, AWS, Git.</p>
+        <p><span class="highlight">Metodología:</span> Granularidad de datos, Data Quality, diseño offline-first, e implementaciones reproducibles.</p>
+    </section>
+</div>
+
+</body>
+</html>
